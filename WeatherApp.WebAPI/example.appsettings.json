@@ -1,0 +1,16 @@
+{
+  "ConnectionStrings": {
+    "Sqlite": "Data Source=weather.db"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "OpenWeatherMap": {
+    "BaseApiURL": "http://api.openweathermap.org/data/2.5/",
+    "ApiKey": "<your_own_key>"
+  }
+}

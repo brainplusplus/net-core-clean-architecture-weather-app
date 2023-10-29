@@ -1,0 +1,10 @@
+[Bb]in/
+[Oo]bj/
+
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+appsettings.json
+weather.db
+*.db

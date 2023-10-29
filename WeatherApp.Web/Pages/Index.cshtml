@@ -1,0 +1,115 @@
+﻿@page
+@model IndexModel
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Weather App";
+    ViewBag.BASE_URL = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
+    ViewBag.BASE_API_URL = Configuration.GetSection("BackendApp")["BaseApiURL"];
+}
+<div class="row text-center">
+    <div class="col-md-12">
+        <h1>Weather App Viewer By Location</h1>
+        <p>Please Select Location</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <div class="form-group row">
+                <label for="inputCountry">Country</label>
+                <select class="form-control" id="inputCountry"></select>
+            </div>
+            <div class="form-group row">
+                <label for="inputCity">City</label>
+                <select class="form-control" id="inputCity"></select>
+            </div>
+            @* <button type="submit" class="btn btn-primary">Submit</button> *@
+        </form>
+    </div>
+</div>
+<div class="row" id="divDetailWeather" style="display:none;">
+    <div class="col-md-12 text-center"><h2>Weather Information</h2></div>
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <td><strong>Location</strong></td>
+                <td>
+                    <ul>
+                        <li>Country ID : <span id="spanCountryId"></span></li>
+                        <li>City Name : <span id="spanCityName"></span></li>
+                        <li>Lat : <span id="spanLat"></span></li>
+                        <li>Lon : <span id="spanLon"></span></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Time</strong></td>
+                <td>
+                    <span id="spanTime"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Wind</strong></td>
+                <td>
+                    <ul>
+                        <li>Speed : <span id="spanWindSpeed"></span></li>
+                        <li>Deg: <span id="spanWindDeg"></span></li>
+                        <li>Gust : <span id="spanWindGust"></span></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Visibility</strong></td>
+                <td>
+                    <span id="spanVisibility"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Sky Conditions</strong></td>
+                <td>
+                    <strong><span id="spanSkyMain"></span></strong> 
+                    (<span id="spanSkyDesc"></span>)
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Temperature</strong></td>
+                <td>
+                    <ul>
+                        <li>In Fahrenheit : <span id="spanTempFahr"></span></li>
+                        <li>In Celcius : <span id="spanTempCelc"></span></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Dew Point</strong></td>
+                <td>
+                    <span id="spanDewPoint"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Relative Humidity</strong></td>
+                <td>
+                    <span id="spanRelativeHumidity"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Pressure</strong></td>
+                <td>
+                    <span id="spanPressure"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script>
+        var BASE_API_URL = '@ViewBag.BASE_API_URL';
+    </script>
+    <script src="~/js/weather.js" asp-append-version="true"></script>
+
+}
